@@ -27,6 +27,7 @@ public class TestArgumentCaptor {
 
     @Test
     public final void shouldContainCertainListItem() {
+
         List<String> asList = Arrays.asList("someElement_test", "someElement");
         final List<String> mockedList = mock(List.class);
         mockedList.addAll(asList);

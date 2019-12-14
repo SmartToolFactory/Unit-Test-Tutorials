@@ -6,6 +6,7 @@ import com.smarttoolfactory.tutorial2_1mockito.model_void_method.Employee;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
@@ -36,14 +37,12 @@ public class TestVoidMethod {
             return null;
         }).when(employee).setName(anyString());
 
-
         doThrow(new RuntimeException()).when(employee).setName(null);
-
         when(employee.getName()).thenReturn(USER_NAME);
 
         employee.setName(USER_NAME);
-        assertEquals(USER_NAME, employee.getName());
 
+        assertEquals(USER_NAME, employee.getName());
         verify(employee, times(1)).setName(USER_NAME);
 
 
@@ -54,9 +53,9 @@ public class TestVoidMethod {
 
         final String USER_NAME = "Test User";
 
+        // Arrange
         Employee employee = mock(Employee.class);
 
-        // Arrange
         doNothing().when(employee).setName(anyString());
 
         // Act
@@ -70,11 +69,11 @@ public class TestVoidMethod {
 
         final String USER_NAME = "Test User";
 
+        // Arrange
         Employee employee = mock(Employee.class);
 
         ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClass(String.class);
 
-        // Arrange
         doNothing().when(employee).setName(argumentCaptor.capture());
 
 
@@ -88,6 +87,7 @@ public class TestVoidMethod {
         // Assert
         assertEquals(USER_NAME, actual);
 
+
     }
 
     @Test
@@ -95,9 +95,9 @@ public class TestVoidMethod {
 
         final String USER_NAME = "Test User";
 
+        // Arrange
         Employee employee = mock(Employee.class);
 
-        // Arrange
         doCallRealMethod().when(employee).setName(USER_NAME);
 
         // Act

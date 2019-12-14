@@ -1,8 +1,7 @@
 package com.smarttoolfactory.tutorial2_1mockito;
 
-
-import com.smarttoolfactory.tutorial2_1mockito.model1.CalculatorService;
-import com.smarttoolfactory.tutorial2_1mockito.model1.MathApplication;
+import com.smarttoolfactory.tutorial2_1mockito.model_math_application.CalculatorService;
+import com.smarttoolfactory.tutorial2_1mockito.model_math_application.MathApplication;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -38,6 +37,7 @@ public class Test2Verify {
         Assert.assertEquals(mathApplication.add(10.0, 20.0), 30.0, 0);
         Assert.assertEquals(mathApplication.add(10.0, 20.0), 30.0, 0);
         Assert.assertEquals(mathApplication.add(10.0, 20.0), 30.0, 0);
+
 
         //test the subtract functionality
         Assert.assertEquals(mathApplication.subtract(20.0, 10.0), 10.0, 0.0);

@@ -1,8 +1,9 @@
 package com.smarttoolfactory.tutorial2_1mockito;
 
-import com.smarttoolfactory.tutorial2_1mockito.model1.CalculatorService;
-import com.smarttoolfactory.tutorial2_1mockito.model1.MathApplication;
+import com.smarttoolfactory.tutorial2_1mockito.model_math_application.CalculatorService;
+import com.smarttoolfactory.tutorial2_1mockito.model_math_application.MathApplication;
 
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
