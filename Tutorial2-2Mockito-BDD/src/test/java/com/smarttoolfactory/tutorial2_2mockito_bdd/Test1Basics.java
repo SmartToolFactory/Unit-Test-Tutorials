@@ -1,66 +1,53 @@
 package com.smarttoolfactory.tutorial2_2mockito_bdd;
 
 
-import com.smarttoolfactory.tutorial2_2mockito_bdd.model_phone_service.PhoneBookRepository;
-import com.smarttoolfactory.tutorial2_2mockito_bdd.model_phone_service.PhoneBookService;
+import com.smarttoolfactory.tutorial2_2mockito_bdd.model_math_application.CalculatorService;
+import com.smarttoolfactory.tutorial2_2mockito_bdd.model_math_application.MathApplication;
 
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 
+import static org.hamcrest.Matchers.closeTo;
+import static org.junit.Assert.assertThat;
 import static org.mockito.BDDMockito.*;
 
+@RunWith(MockitoJUnitRunner.class)
 public class Test1Basics {
 
-
-    String momContactName = "Mom";
-    String momPhoneNumber = "01234";
-    String xContactName = "x";
-    String tooLongPhoneNumber = "01111111111111";
-
-
     @InjectMocks
-    PhoneBookService phoneBookService;
+    MathApplication mathApplication;
 
     @Mock
-    PhoneBookRepository phoneBookRepository;
-
-    @Before
-    public void setUp() {
-        MockitoAnnotations.initMocks(this);
-    }
+    CalculatorService calcService;
 
 
     @Test
-    public void testReturnFixedValue() {
+    public void testAdd() {
 
-        when(phoneBookRepository.contains(momContactName)).thenReturn(false);
-
-        phoneBookService.register(xContactName, "");
-
-        verify(phoneBookRepository, never()).insert(momContactName, momPhoneNumber);
-
-
-    }
-
-    @Test
-    public void testReturnFixedValueBDD() {
+//        // 🔥 calcService is an Interface
+//        //add the behavior of calc service to add two numbers
+//        when(calcService.add(10.0, 20.0)).thenReturn(30.00);
+//
+//        System.out.println("testAdd calcService: " + calcService + ", mathApplication: " + mathApplication);
+//
+//        //test the add functionality
+//        Assert.assertEquals(mathApplication.add(10.0, 20.0), 30.0, 0);
 
         // Given
-        given(phoneBookRepository.contains(momContactName))
-                .willReturn(false);
+        given(calcService.add(10.0, 20.0)).willReturn(30.00);
 
         // When
-        phoneBookService.register(xContactName, "");
+        double expected = mathApplication.add(10.0, 20.0);
 
         // Then
-        then(phoneBookRepository)
-                .should(never())
-                .insert(momContactName, momPhoneNumber);
-
+        // Check if adding 10 + 20  with add method is close to 30 with ERROR 0
+        assertThat(expected, closeTo(30.0, 0.0));
+        then(calcService).should(times(1)).add(10.0, 20.0);
 
     }
+
 
 }

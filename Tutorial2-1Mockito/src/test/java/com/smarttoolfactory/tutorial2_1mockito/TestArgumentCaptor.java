@@ -12,6 +12,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
@@ -30,8 +32,10 @@ public class TestArgumentCaptor {
 
         List<String> asList = Arrays.asList("someElement_test", "someElement");
         final List<String> mockedList = mock(List.class);
+
         mockedList.addAll(asList);
 
+        // 🔥 Without this test FAILS
         verify(mockedList).addAll(captor.capture());
 
         final List<String> capturedArgument = captor.getValue();

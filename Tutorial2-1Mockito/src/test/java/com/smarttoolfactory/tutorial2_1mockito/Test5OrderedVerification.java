@@ -14,6 +14,10 @@ import org.junit.runner.RunWith;
 import org.mockito.InOrder;
 import org.mockito.junit.MockitoJUnitRunner;
 
+
+/**
+ * InOrder is used to make sure that a methods are called in specified order
+ */
 @RunWith(MockitoJUnitRunner.class)
 public class Test5OrderedVerification {
 

@@ -1,4 +1,4 @@
-package com.smarttoolfactory.tutorial2_1mockito.model1;
+package com.smarttoolfactory.tutorial2_1mockito.model_math_application;
 
 public class MathApplication {
 
