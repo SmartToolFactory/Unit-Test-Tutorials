@@ -86,6 +86,7 @@ public class TestVoidMethod {
 
         // Assert
         assertEquals(USER_NAME, actual);
+        verify(employee, times(1)).setName(argumentCaptor.getValue());
 
 
     }

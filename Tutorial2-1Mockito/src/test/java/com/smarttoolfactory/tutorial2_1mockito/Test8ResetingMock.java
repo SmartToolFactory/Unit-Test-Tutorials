@@ -38,9 +38,8 @@ public class Test8ResetingMock {
         //reset the mock
         reset(calcService);
 
-
         /*
-         🔥 Fails because mock is reset and when function, should be called again
+         🔥 FAILs because mock is reset and when function, should be called again
             when(calcService.add(20.0,10.0)).thenReturn(30.0);
 
          */

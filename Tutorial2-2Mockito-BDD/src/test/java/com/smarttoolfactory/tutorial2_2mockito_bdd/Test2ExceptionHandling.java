@@ -3,7 +3,6 @@ package com.smarttoolfactory.tutorial2_2mockito_bdd;
 import com.smarttoolfactory.tutorial2_2mockito_bdd.model_math_application.CalculatorService;
 import com.smarttoolfactory.tutorial2_2mockito_bdd.model_math_application.MathApplication;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -44,7 +43,7 @@ public class Test2ExceptionHandling {
             System.out.println("RunTime Exception is thrown");
         }
 
-        then(calcService).should(times(1)).add(10.0,20.0);
+        then(calcService).should(times(1)).add(10.0, 20.0);
 
     }
 }
