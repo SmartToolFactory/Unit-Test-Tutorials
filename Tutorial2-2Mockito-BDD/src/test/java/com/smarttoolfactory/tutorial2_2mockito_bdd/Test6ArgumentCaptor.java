@@ -9,15 +9,12 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.invocation.InvocationOnMock;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.mockito.stubbing.Answer;
 
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.*;
 
 
@@ -36,26 +33,23 @@ public class Test6ArgumentCaptor {
 
 
     @Test
-    public void validate() {
+    public void validate_pass() {
 
         // Given
-        given(iLoginManager.validate(argumentCaptor.capture(), argumentCaptor.capture()))
-                .willAnswer((Answer<String>) invocation -> {
-                    List<String> credentials = argumentCaptor.getAllValues();
-                    return credentials.get(0) + "-" + credentials.get(1);
-                });
-
+        given(iLoginManager.validate("hello", "world")).willReturn("hello-world");
 
         // When
         String expected = loginManagerImpl.validate("hello", "world");
-        // 🔥🔥 argumentCaptor MUST be called after mock method is called
-        List<String> credentials = argumentCaptor.getAllValues();
 
         // Then
-        then(iLoginManager).should().validate(credentials.get(0), credentials.get(1));
+        then(iLoginManager).should().validate(argumentCaptor.capture(), argumentCaptor.capture());
+        // 🔥🔥 argumentCaptor MUST be called after mock method is called
+        List<String> arguments = argumentCaptor.getAllValues();
+
+        assertThat("hello", is(arguments.get(0)));
+        assertThat("world", is(arguments.get(1)));
 
         assertThat(expected, is("hello-world"));
-
 
     }
 

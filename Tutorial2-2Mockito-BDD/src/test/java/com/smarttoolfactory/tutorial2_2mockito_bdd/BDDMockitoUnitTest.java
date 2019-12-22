@@ -6,7 +6,6 @@ import com.smarttoolfactory.tutorial2_2mockito_bdd.model_phone_service.PhoneBook
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 
 import static org.junit.Assert.fail;
@@ -25,7 +24,7 @@ public class BDDMockitoUnitTest {
 
     @Before
     public void init() {
-        phoneBookRepository = Mockito.mock(PhoneBookRepository.class);
+        phoneBookRepository = mock(PhoneBookRepository.class);
         phoneBookService = new PhoneBookService(phoneBookRepository);
     }
 
@@ -37,7 +36,7 @@ public class BDDMockitoUnitTest {
 
         given(phoneBookRepository.getPhoneNumberByContactName(momContactName))
                 .will((InvocationOnMock invocation) -> {
-                    if(invocation.getArgument(0).equals(momContactName)) {
+                    if (invocation.getArgument(0).equals(momContactName)) {
                         return momPhoneNumber;
                     } else {
                         return null;
@@ -89,7 +88,8 @@ public class BDDMockitoUnitTest {
         try {
             phoneBookService.register(xContactName, tooLongPhoneNumber);
             fail("Should throw exception");
-        } catch (RuntimeException ex) { }
+        } catch (RuntimeException ex) {
+        }
 
         then(phoneBookRepository).should(never()).insert(momContactName, tooLongPhoneNumber);
     }
@@ -102,7 +102,8 @@ public class BDDMockitoUnitTest {
         try {
             phoneBookService.register(momContactName, momPhoneNumber);
             fail("Should throw exception");
-        } catch(Exception ex) { }
+        } catch (Exception ex) {
+        }
 
         then(phoneBookRepository).should(never()).insert(momContactName, momPhoneNumber);
     }

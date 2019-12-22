@@ -38,8 +38,10 @@ class MockitoArgumentCaptorExamples {
 		assertTrue(mockMathUtils.isInteger("999"));
 
 		verify(mockMathUtils).add(acInteger.capture(), acInteger.capture());
+
 		List<Integer> allValues = acInteger.getAllValues();
 		assertEquals(List.of(1, 1), allValues);
+
 		verify(mockMathUtils, times(2)).isInteger(acString.capture());
 		List<String> allStringValues = acString.getAllValues();
 		assertEquals(List.of("1", "999"), allStringValues);

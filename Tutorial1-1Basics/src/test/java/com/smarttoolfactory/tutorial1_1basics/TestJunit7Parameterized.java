@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class TestJunit8Parameterized {
+public class TestJunit7Parameterized {
 
     private Integer inputNumber;
     private Boolean expectedResult;
@@ -27,7 +27,7 @@ public class TestJunit8Parameterized {
     // Every time runner triggers, it will pass the arguments
     // from parameters we defined in primeNumbers() method
 
-    public TestJunit8Parameterized(Integer inputNumber, Boolean expectedResult) {
+    public TestJunit7Parameterized(Integer inputNumber, Boolean expectedResult) {
         this.inputNumber = inputNumber;
         this.expectedResult = expectedResult;
     }

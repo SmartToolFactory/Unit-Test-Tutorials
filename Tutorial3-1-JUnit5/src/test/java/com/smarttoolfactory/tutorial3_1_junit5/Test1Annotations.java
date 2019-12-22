@@ -1,25 +1,38 @@
-package com.smarttoolfactory.tutorial1_1basics;
+package com.smarttoolfactory.tutorial3_1_junit5;
 
-import static org.junit.Assert.assertEquals;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import com.smarttoolfactory.tutorial3_1_junit5.model_calculation.Calculation;
 
-public class Test1Basic {
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+
+/**
+ * <li>@Before annotation is renamed to @BeforeEach</li>
+ * <li>@After annotation is renamed to @AfterEach</li>
+ * <li>@BeforeClass annotation is renamed to @BeforeAll</li>
+ * <li>@AfterClass annotation is renamed to @AfterAll</li>
+ * <li>@Ignore annotation is renamed to @Disabled</li>
+ */
+public class Test1Annotations {
     Calculation mCalculation;
 
-    @BeforeClass
+    //    @BeforeClass
+    @BeforeAll
     public static void setUpBeforeClass() throws Exception {
-        System.out.println("before class");
+        System.out.println("before all");
     }
 
-    @Before
+    //    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         mCalculation = new Calculation();
-        System.out.println("before");
+        System.out.println("before each");
     }
 
     @Test
@@ -49,14 +62,16 @@ public class Test1Basic {
     }
 
 
-    @After
+    //    @After
+    @AfterEach
     public void tearDown() throws Exception {
-        System.out.println("after");
+        System.out.println("after each");
     }
 
-    @AfterClass
+    //    @AfterClass
+    @AfterAll
     public static void tearDownAfterClass() throws Exception {
-        System.out.println("after class");
+        System.out.println("after all");
     }
 
 }

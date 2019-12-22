@@ -30,7 +30,7 @@ import org.junit.Test;
  * 6- '@Ignore' The Ignore annotation is used to ignore the test and that test will not be executed.
  * </li>
  */
-public class TestJunit5Annotation {
+public class TestJunit5ExecutionOrder {
 
     //execute before class
     @BeforeClass

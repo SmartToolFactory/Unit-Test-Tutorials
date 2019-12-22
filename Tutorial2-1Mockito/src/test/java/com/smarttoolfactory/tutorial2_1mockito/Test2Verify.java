@@ -27,9 +27,15 @@ public class Test2Verify {
 
     @Test
     public void testAdd() {
+
         //add the behavior of calc service to add two numbers
         when(calcService.add(10.0, 20.0)).thenReturn(30.00);
 
+        MathApplication mathApplication1 = new MathApplication();
+        MathApplication mathApplication2 = new MathApplication();
+
+        System.out.println("Mat1 equals Mat2: " + mathApplication1.equals(mathApplication));
+        System.out.println("Mat1 == Mat2: " + (mathApplication1 == mathApplication2));
 
 
         //test the add functionality
@@ -54,5 +60,6 @@ public class Test2Verify {
 
         //verify that method was never called on a mock
         verify(calcService, never()).multiply(10.0, 20.0);
+
     }
 }

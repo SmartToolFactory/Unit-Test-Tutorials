@@ -10,11 +10,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
 
-/**
- * When and thenReturn is used to add behavior to an non-concrete class
- */
+
 // @RunWith attaches a runner with the test class to initialize the test data
 @RunWith(MockitoJUnitRunner.class)
 public class Test1RunWith {

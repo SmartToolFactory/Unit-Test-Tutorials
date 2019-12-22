@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
  * '@Ignore' causes test class to be ignored entirely
  */
 @Ignore
-public class TestJunit7Ignore {
+public class TestJunit6Ignore {
 
     String message = "Robert";
     MessageUtil messageUtil = new MessageUtil(message);

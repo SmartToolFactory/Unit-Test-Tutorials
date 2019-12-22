@@ -2,6 +2,7 @@ package com.smarttoolfactory.tutorial1_1basics;
 
 import org.junit.Test;
 
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 
@@ -60,26 +61,46 @@ public class TestJunit4Assertions {
 
         //Check that two objects are equal
         assertEquals(str1, str2);
+        // With assertThat
+        assertThat(str1, is(str2));
 
         //Check that a condition is true
         assertTrue(val1 < val2);
+        // With assertThat
+        assertThat(val1, lessThan(val2));
+
 
         //Check that a condition is false
         assertFalse(val1 > val2);
+        // With assertThat
+        assertThat(val2, greaterThan(val1));
 
         //Check that an object isn't null
         assertNotNull(str1);
+        // With assertThat
+        assertThat(str1, is(notNullValue()));
 
         //Check that an object is null
         assertNull(str3);
+        // With assertThat
+        assertThat(str3, is(nullValue()));
 
         //Check if two object references point to the same object
         assertSame(str4, str5);
+        // With assertThat
+        assertThat(str4, is(str5));
 
         //Check if two object references not point to the same object
         assertNotSame(str1, str3);
+        // With assertThat
+        assertThat(str1, is(not(str3)));
 
         //Check whether two arrays are equal to each other.
         assertArrayEquals(expectedArray, resultArray);
+        // With assertThat
+        assertThat(expectedArray, is(resultArray));
+
+        System.out.println(expectedArray == resultArray);
+        System.out.println(expectedArray.equals(resultArray));
     }
 }

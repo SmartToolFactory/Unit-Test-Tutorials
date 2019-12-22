@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/Tutorial1-1Basics" />
             <option value="$PROJECT_DIR$/Tutorial2-1Mockito" />
             <option value="$PROJECT_DIR$/Tutorial2-2Mockito-BDD" />
+            <option value="$PROJECT_DIR$/Tutorial3-1-JUnit5" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

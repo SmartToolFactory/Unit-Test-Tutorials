@@ -1,5 +1,7 @@
 package com.smarttoolfactory.tutorial2_1mockito.model_math_application;
 
+import androidx.annotation.Nullable;
+
 public class MathApplication {
 
     private CalculatorService calcService;
@@ -24,4 +26,14 @@ public class MathApplication {
         return calcService.divide(input1, input2);
     }
 
+    @Override
+    public boolean equals(@Nullable Object obj) {
+
+        if (obj.getClass() == MathApplication.class) {
+            MathApplication mathApplication = (MathApplication) obj;
+            return (this.calcService == mathApplication.calcService) || this.calcService == null;
+        }
+
+        return super.equals(obj);
+    }
 }
