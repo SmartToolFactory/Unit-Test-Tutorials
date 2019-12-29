@@ -8,7 +8,7 @@ public class TestRunner6Ignore {
 
     public static void main(String[] args) {
 
-        Result result = JUnitCore.runClasses(TestJunit6ExecutionOrder.class);
+        Result result = JUnitCore.runClasses(TestJunit6Ignore.class);
 
         for (Failure failure : result.getFailures()) {
             System.out.println("TestRunner6Ignore failure: " + failure.toString());

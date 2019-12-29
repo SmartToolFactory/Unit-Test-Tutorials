@@ -3,6 +3,7 @@ package com.smarttoolfactory.tutorial2_1mockito;
 import com.smarttoolfactory.tutorial2_1mockito.model_math_application.CalculatorService;
 import com.smarttoolfactory.tutorial2_1mockito.model_math_application.MathApplication;
 
+import static junit.framework.TestCase.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.times;
@@ -49,7 +50,7 @@ public class Test2Verify {
         double expected = mathApplication.subtract(20.0, 10.0);
 
         //test the subtract functionality
-        Assert.assertEquals(expected, 10.0, 0.0);
+        assertEquals(expected, 10.0, 0.0);
 
 
         //default call count is 1

@@ -26,7 +26,8 @@ public class Test1WithMock {
 
     @Before
     public void setUp() {
-        // 🔥🔥 Initializes mock objects
+        // 🔥🔥 Initializes mock objects annotated with Mockito annotations
+        // for given testClass: @Mock, @Spy, @Captor, @InjectMocks
         MockitoAnnotations.initMocks(this);
 
     }

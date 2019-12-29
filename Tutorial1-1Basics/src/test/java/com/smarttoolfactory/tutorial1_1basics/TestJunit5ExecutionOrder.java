@@ -11,6 +11,10 @@ import org.junit.Test;
 
 
 /**
+ *
+ * Each time a test is run, new Instance of this Test class is created.
+ *
+ * <p></p>
  * <li>
  * 1- '@Test' The Test annotation tells JUnit that the public void method to which it is attached can be run as a test case.
  * </li>
@@ -47,7 +51,7 @@ public class TestJunit5ExecutionOrder {
     //execute before test
     @Before
     public void before() {
-        System.out.println("in before");
+        System.out.println("in before with instance: " + this);
     }
 
     //execute after test
@@ -58,8 +62,14 @@ public class TestJunit5ExecutionOrder {
 
     //test case
     @Test
-    public void test() {
-        System.out.println("in test");
+    public void test1() {
+        System.out.println("in test1");
+    }
+
+    //test case
+    @Test
+    public void test2() {
+        System.out.println("in test2");
     }
 
     //test case ignore and will not execute

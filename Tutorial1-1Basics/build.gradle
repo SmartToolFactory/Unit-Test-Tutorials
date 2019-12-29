@@ -6,7 +6,6 @@ android {
     compileSdkVersion rootProject.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.example.tutorial1_1basics"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         versionCode 1

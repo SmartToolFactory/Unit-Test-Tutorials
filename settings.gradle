@@ -1,6 +1,6 @@
 rootProject.name = 'UnitTestTutorial'
 
-include ':External-Tutorial-Journaldev-Mockitoexamples-Junit5', ':External-Tutorial-In28Minutes', ':Tutorial3-1-JUnit5'
+include ':External-Tutorial-Journaldev-Mockitoexamples-Junit5', ':External-Tutorial-In28Minutes', ':Tutorial3-1JUnit5', ':Tutorial4-1Kotlin', ':External-Tutorial-MkYong-JUnit5Examples'
 include ':Tutorial1-1Basics'
 include ':Tutorial2-1Mockito'
 include ':Tutorial2-2Mockito-BDD'

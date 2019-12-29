@@ -13,7 +13,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
-@RunWith(MockitoJUnitRunner.class)
+//@RunWith(MockitoJUnitRunner.class)
 public class Test8ResetingMock {
 
     private MathApplication mathApplication;
@@ -36,7 +36,7 @@ public class Test8ResetingMock {
         Assert.assertEquals(mathApplication.add(20.0, 10.0),30.0,0);
 
         //reset the mock
-        reset(calcService);
+//        reset(calcService);
 
         /*
          🔥 FAILs because mock is reset and when function, should be called again
