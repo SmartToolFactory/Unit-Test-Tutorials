@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assumptions.*;
  * <p></p>
  * Assumptions also understand lambda expressions.
  */
-class Test5Assumptions {
+class Test6Assumptions {
 
     @Test
     void testOnDev() {
@@ -31,7 +31,7 @@ class Test5Assumptions {
     @Test
     void testOnProd() {
         System.setProperty("ENV", "PROD");
-        assumeTrue("DEV".equals(System.getProperty("ENV")), Test5Assumptions::message);
+        assumeTrue("DEV".equals(System.getProperty("ENV")), Test6Assumptions::message);
         //remainder of test will be aborted
     }
 

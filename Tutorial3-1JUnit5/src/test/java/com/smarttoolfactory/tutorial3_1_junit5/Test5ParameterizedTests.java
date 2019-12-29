@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 import static org.junit.jupiter.params.provider.EnumSource.Mode.EXCLUDE;
 
-class Test4Parameterized {
+class Test5ParameterizedTests {
 
     /*
         @ValueSource

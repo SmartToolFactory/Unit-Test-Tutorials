@@ -10,9 +10,8 @@ import org.junit.jupiter.api.Test;
  *
  * <p></p>
  * Disabled test are ignored.
- *
  */
-public class Test2DisplayAndDisabled {
+class Test2DisplayAndDisabled {
 
 
     @DisplayName("Single test successful")

@@ -9,7 +9,7 @@ import org.junit.jupiter.api.TestMethodOrder;
  *
  */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class Test9Order1OrderAnnotation {
+class Test10Order1OrderAnnotation {
 
 
     @Test

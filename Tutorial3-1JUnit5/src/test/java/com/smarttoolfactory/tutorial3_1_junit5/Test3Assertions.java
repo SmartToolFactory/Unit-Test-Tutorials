@@ -31,7 +31,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * N/A                  assertTimeOut
  * N/A                  assertTimeoutPreemptively
  */
-public class Test3Assertions {
+class Test3Assertions {
 
     private final Calculator calculator = new Calculator();
 

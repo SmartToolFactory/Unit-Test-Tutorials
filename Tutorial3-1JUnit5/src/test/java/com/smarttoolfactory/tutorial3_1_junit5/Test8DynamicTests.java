@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Test7Dynamic {
+class Test8DynamicTests {
 
     @TestFactory
     Collection<DynamicTest> dynamicTest() {

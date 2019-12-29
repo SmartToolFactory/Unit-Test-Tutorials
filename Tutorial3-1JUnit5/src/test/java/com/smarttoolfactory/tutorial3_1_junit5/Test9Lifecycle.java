@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class Test8Lifecycle {
+class Test9Lifecycle {
 
 
     Calculation mCalculation;

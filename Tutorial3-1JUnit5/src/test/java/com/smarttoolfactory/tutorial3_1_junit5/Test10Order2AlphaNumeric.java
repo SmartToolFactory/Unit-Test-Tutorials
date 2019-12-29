@@ -9,7 +9,7 @@ import org.junit.jupiter.api.TestMethodOrder;
  * Tests run in order with the name given to methods based on alphanumeric ordering
  */
 @TestMethodOrder(MethodOrderer.Alphanumeric.class)
-class Test9Order2AlphaNumeric {
+class Test10Order2AlphaNumeric {
 
     @Test
     void testC() {

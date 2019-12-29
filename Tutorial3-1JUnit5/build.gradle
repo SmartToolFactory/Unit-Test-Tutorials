@@ -37,6 +37,9 @@ dependencies {
     // Mockito
     testImplementation 'org.mockito:mockito-core:3.0.0'
 
+    // Mockito for JUnit 5
+    testImplementation 'org.mockito:mockito-junit-jupiter:3.0.0'
+
     // Hamcrest
     testImplementation "org.hamcrest:hamcrest-all:$hamcrestVersion"
 
