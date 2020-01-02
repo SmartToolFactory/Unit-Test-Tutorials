@@ -41,9 +41,6 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
-    // Mockito for JUnit 5
-    testImplementation 'org.mockito:mockito-junit-jupiter:3.0.0'
-
     // MockK
     testImplementation "io.mockk:mockk:1.9.3"
 
