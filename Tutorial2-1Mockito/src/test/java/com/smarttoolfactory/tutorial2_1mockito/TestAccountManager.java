@@ -126,10 +126,10 @@ public class TestAccountManager {
         order.verify(accountManager).getBalance(account);
         print("Verified getBalance(account) is called one more time after withdraw");
 
+        verifyNoMoreInteractions(accountManager);
 
         verify(accountManager,times(2)).getBalance(any());
 
-        verifyNoMoreInteractions(accountManager);
         print("verified no more calls are executed on the mock object");
     }
 

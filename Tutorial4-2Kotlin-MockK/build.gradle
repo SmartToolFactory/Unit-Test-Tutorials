@@ -44,6 +44,9 @@ dependencies {
     // Mockito for JUnit 5
     testImplementation 'org.mockito:mockito-junit-jupiter:3.0.0'
 
+    // MockK
+    testImplementation "io.mockk:mockk:1.9.3"
+
     // Hamcrest
     testImplementation "org.hamcrest:hamcrest-all:$hamcrestVersion"
     testImplementation('org.hamcrest:hamcrest-library:2.1')
@@ -56,8 +59,8 @@ dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter-params:5.4.0"
 
     // (Optional) If you also have JUnit 4-based tests
-    testImplementation "junit:junit:4.12"
-    testRuntimeOnly "org.junit.vintage:junit-vintage-engine:5.3.1"
+//    testImplementation "junit:junit:4.12"
+//    testRuntimeOnly "org.junit.vintage:junit-vintage-engine:5.3.1"
 
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

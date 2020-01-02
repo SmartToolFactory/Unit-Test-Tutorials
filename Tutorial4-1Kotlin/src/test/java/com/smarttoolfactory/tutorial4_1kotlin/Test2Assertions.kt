@@ -11,7 +11,7 @@ class Test2Assertions {
 
     private val calculator: Calculator = Calculator()
 
-    private val person: Person = Person("Jane", "Doe")
+    private val student: Person = Person("Jane", "Doe")
 
     @Test
     fun `Standard Assertions`() {
@@ -64,8 +64,8 @@ class Test2Assertions {
         // failures will be reported together.
         assertAll(
             "Person Properties",
-            Executable { assertEquals("Jane", person.firstName) },
-            Executable { assertEquals("Doe", person.lastName) }
+            Executable { assertEquals("Jane", student.firstName) },
+            Executable { assertEquals("Doe", student.lastName) }
         )
     }
 
@@ -85,7 +85,7 @@ class Test2Assertions {
             // 🔥 First Assertion Group
             Executable {
                 println("First group test STARTED")
-                val firstName: String = person.firstName
+                val firstName: String = student.firstName
 
                 assertNotNull(firstName)
 
@@ -104,7 +104,7 @@ class Test2Assertions {
                 println("Second group test STARTED")
                 // Grouped assertion, so processed independently
                 // of results of first name assertions.
-                val lastName: String = person.lastName
+                val lastName: String = student.lastName
 
                 assertNotNull(lastName)
                 // Executed only if the previous assertion is valid.

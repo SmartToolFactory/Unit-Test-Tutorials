@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/Tutorial2-2Mockito-BDD" />
             <option value="$PROJECT_DIR$/Tutorial3-1JUnit5" />
             <option value="$PROJECT_DIR$/Tutorial4-1Kotlin" />
+            <option value="$PROJECT_DIR$/Tutorial4-2Kotlin-MockK" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
