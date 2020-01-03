@@ -29,12 +29,6 @@ internal class Test1ExtendWith {
     @MockK
     private lateinit var calcService: CalculatorService
 
-    @BeforeEach
-    fun setUp() {
-//        MockKAnnotations.init(this)
-    }
-
-
     companion object {
 
         @BeforeAll

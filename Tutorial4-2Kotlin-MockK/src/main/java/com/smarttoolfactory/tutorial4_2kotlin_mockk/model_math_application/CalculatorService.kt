@@ -7,4 +7,6 @@ interface CalculatorService {
     fun divide(input1: Double, input2: Double): Double
 
     fun print(text: String)
+
+    fun log(text: String): String
 }

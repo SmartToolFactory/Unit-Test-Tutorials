@@ -16,7 +16,7 @@ class Test4MockClassEnumConstructor {
     @Nested
     inner class Test4MockClass {
 
-        val car = mockkClass(Car::class)
+        private val car = mockkClass(Car::class)
 
 
         @Test

@@ -34,7 +34,7 @@ public class Test1RunWith {
         //add the behavior of calc service to add two numbers
         when(calcService.add(10.0, 20.0)).thenReturn(30.00);
 
-        System.out.println("testAdd calcService: " + calcService + ", mathApplication: " + mathApplication);
+        System.out.println("testAddWithAnswer calcService: " + calcService + ", mathApplication: " + mathApplication);
 
         //test the add functionality
         Assert.assertEquals(mathApplication.add(10.0, 20.0), 30.0, 0);
@@ -47,7 +47,7 @@ public class Test1RunWith {
 
         when(calcService.subtract(20.0, 10.0)).thenReturn(10.00);
 
-        System.out.println("testAdd calcService: " + calcService + ", mathApplication: " + mathApplication);
+        System.out.println("testAddWithAnswer calcService: " + calcService + ", mathApplication: " + mathApplication);
 
         //test the add functionality
         Assert.assertEquals(mathApplication.subtract(20.0, 10.0), 10.0, 0);

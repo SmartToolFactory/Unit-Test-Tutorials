@@ -2,26 +2,28 @@ package com.smarttoolfactory.tutorial4_2kotlin_mockk
 
 import com.smarttoolfactory.tutorial4_2kotlin_mockk.model_math_application.CalculatorService
 import com.smarttoolfactory.tutorial4_2kotlin_mockk.model_math_application.MathApplication
-import io.mockk.every
-import io.mockk.mockk
+import io.mockk.MockKAnnotations
+import io.mockk.MockKAnnotations.init
+import io.mockk.impl.annotations.InjectMockKs
+import io.mockk.impl.annotations.MockK
 import io.mockk.verify
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
-class Test1WithSetUp {
+class Test1WithInit {
 
-
+    //@InjectMockKs annotation is used to create and inject the mock object
+    @InjectMockKs
     private lateinit var mathApplication: MathApplication
+    //@MockK annotation is used to create the mock object to be injected
+    @MockK
     private lateinit var calcService: CalculatorService
 
     @BeforeEach
     fun setUp() {
-        mathApplication = MathApplication()
-
-        calcService = mockk<CalculatorService>()
-
-        mathApplication.calcService = calcService
+        // 🔥🔥 Initializes mock objects annotated with MockKAnnotations
+        init(this)
     }
 
 
@@ -29,7 +31,7 @@ class Test1WithSetUp {
     fun `Add two numbers`() {
 
         // Given
-        every { calcService.add(10.0, 20.0) } returns 30.0
+//        every { calcService.add(10.0, 20.0) } returns 30.0
 
         // When
         val expected = mathApplication.add(10.0, 20.0)

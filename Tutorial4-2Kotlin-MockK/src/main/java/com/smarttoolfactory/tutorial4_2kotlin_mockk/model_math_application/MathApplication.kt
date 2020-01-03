@@ -25,4 +25,6 @@ class MathApplication {
     fun print(text: String) {
         calcService!!.print(text)
     }
+
+    fun log(text: String) = calcService!!.log(text)
 }

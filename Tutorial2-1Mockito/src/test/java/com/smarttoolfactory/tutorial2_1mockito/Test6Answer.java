@@ -15,7 +15,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
 
 @RunWith(MockitoJUnitRunner.class)
-public class Test6Callbacks {
+public class Test6Answer {
 
     private MathApplication mathApplication;
     private CalculatorService calcService;
@@ -28,7 +28,7 @@ public class Test6Callbacks {
     }
 
     @Test
-    public void testAdd() {
+    public void testAddWithAnswer() {
 
         //add the behavior to add numbers
         when(calcService.add(20.0, 10.0)).thenAnswer(new Answer<Double>() {
@@ -43,11 +43,11 @@ public class Test6Callbacks {
                 Object mock = invocation.getMock();
 
                 //return the result
-                return 30.0;
+                return 40.0;
             }
         });
 
         //test the add functionality
-        Assert.assertEquals(mathApplication.add(20.0, 10.0), 30.0, 0);
+        Assert.assertEquals(mathApplication.add(20.0, 10.0), 40.0, 0);
     }
 }
