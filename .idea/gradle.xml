@@ -8,6 +8,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/External-Tutorial-Hadi-Hariri-Mockito-Sample" />
             <option value="$PROJECT_DIR$/External-Tutorial-In28Minutes" />
             <option value="$PROJECT_DIR$/External-Tutorial-Journaldev-Mockitoexamples-Junit5" />
             <option value="$PROJECT_DIR$/External-Tutorial-MkYong-JUnit5Examples" />
@@ -17,6 +18,7 @@
             <option value="$PROJECT_DIR$/Tutorial3-1JUnit5" />
             <option value="$PROJECT_DIR$/Tutorial4-1Kotlin" />
             <option value="$PROJECT_DIR$/Tutorial4-2Kotlin-MockK" />
+            <option value="$PROJECT_DIR$/Tutorial5-1RxJavaTests" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

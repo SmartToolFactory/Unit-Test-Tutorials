@@ -14,7 +14,11 @@ import org.mockito.Mockito.*
 import org.mockito.junit.jupiter.MockitoExtension
 import org.mockito.Mockito.`when` as whenever
 
-// TODO Fix final class Mocking with Kotlin
+
+/**
+ * Create file inside resources/mockito-extensions with name org.mockito.plugins.MockitoMaker
+ * and add mock-maker-inline line to it
+ */
 @ExtendWith(MockitoExtension::class)
 class Test9Mock2FinalClass {
 

@@ -1,6 +1,6 @@
 package com.smarttoolfactory.tutorial4_1kotlin.model_usecase
 
-open class LocalStudentDataSource : StudentDataSource {
+class LocalStudentDataSource : StudentDataSource {
 
     private val list = arrayListOf<Student>()
 
