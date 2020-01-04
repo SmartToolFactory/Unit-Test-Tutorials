@@ -26,6 +26,10 @@ class Car {
         return WindowState.UP
     }
 
+    fun accelerate(fromSpeed: Int, toSpeed: Int) {
+
+    }
+
 
 }
 

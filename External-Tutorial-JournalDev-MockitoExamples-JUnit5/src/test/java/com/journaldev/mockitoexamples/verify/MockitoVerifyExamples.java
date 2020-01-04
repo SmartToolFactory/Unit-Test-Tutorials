@@ -44,6 +44,7 @@ class MockitoVerifyExamples {
 
 		// all interactions are verified, so below will pass
 		verifyNoMoreInteractions(mockList);
+
 		mockList.isEmpty();
 		// isEmpty() is not verified, so below will fail
 		// verifyNoMoreInteractions(mockList);

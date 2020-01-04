@@ -5,6 +5,7 @@ import com.smarttoolfactory.tutorial2_1mockito.model_math_application.MathApplic
 
 import static junit.framework.TestCase.assertEquals;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.never;
@@ -52,7 +53,6 @@ public class Test2Verify {
         //test the subtract functionality
         assertEquals(expected, 10.0, 0.0);
 
-
         //default call count is 1
         verify(calcService).subtract(20.0, 10.0);
 
@@ -61,6 +61,10 @@ public class Test2Verify {
 
         //verify that method was never called on a mock
         verify(calcService, never()).multiply(10.0, 20.0);
+
+        // 🔥 Passes after mock method calls and verify method calls are done
+        verifyNoMoreInteractions(calcService);
+
 
     }
 }
