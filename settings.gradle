@@ -1,6 +1,14 @@
 rootProject.name = 'UnitTestTutorial'
 
-include ':External-Tutorial-Journaldev-Mockitoexamples-Junit5', ':External-Tutorial-In28Minutes', ':Tutorial3-1JUnit5', ':Tutorial4-1Kotlin', ':External-Tutorial-MkYong-JUnit5Examples', ':Tutorial4-2Kotlin-MockK', ':Tutorial5-1RxJavaTests', ':External-Tutorial-Hadi-Hariri-Mockito-Sample'
+include ':External-Tutorial-Journaldev-Mockitoexamples-Junit5'
+include ':External-Tutorial-Hadi-Hariri-Mockito-Sample'
+include ':External-Tutorial-In28Minutes'
+include ':External-Tutorial-MkYong-JUnit5Examples'
+
 include ':Tutorial1-1Basics'
 include ':Tutorial2-1Mockito'
 include ':Tutorial2-2Mockito-BDD'
+include ':Tutorial3-1JUnit5'
+include ':Tutorial4-1Kotlin'
+include ':Tutorial4-2Kotlin-MockK'
+include ':Tutorial5-1RxJava-Tests'

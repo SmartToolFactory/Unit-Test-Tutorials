@@ -18,7 +18,7 @@
             <option value="$PROJECT_DIR$/Tutorial3-1JUnit5" />
             <option value="$PROJECT_DIR$/Tutorial4-1Kotlin" />
             <option value="$PROJECT_DIR$/Tutorial4-2Kotlin-MockK" />
-            <option value="$PROJECT_DIR$/Tutorial5-1RxJavaTests" />
+            <option value="$PROJECT_DIR$/Tutorial5-1RxJava-Tests" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
