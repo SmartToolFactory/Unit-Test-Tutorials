@@ -1,8 +1,8 @@
 package com.smarttoolfactory.tutorial4_2kotlin_mockk
 
-import com.smarttoolfactory.tutorial4_2kotlin_mockk.model_car.Car
-import com.smarttoolfactory.tutorial4_2kotlin_mockk.model_car.DoorType
-import com.smarttoolfactory.tutorial4_2kotlin_mockk.model_car.WindowState
+import com.smarttoolfactory.tutorial4_2kotlin_mockk.car.Car
+import com.smarttoolfactory.tutorial4_2kotlin_mockk.car.DoorType
+import com.smarttoolfactory.tutorial4_2kotlin_mockk.car.WindowState
 import io.mockk.confirmVerified
 import io.mockk.every
 import io.mockk.mockk

@@ -1,8 +1,8 @@
 package com.smarttoolfactory.tutorial4_2kotlin_mockk
 
-import com.smarttoolfactory.tutorial4_2kotlin_mockk.model_car.Car
-import com.smarttoolfactory.tutorial4_2kotlin_mockk.model_car.Direction
-import com.smarttoolfactory.tutorial4_2kotlin_mockk.model_car.Outcome
+import com.smarttoolfactory.tutorial4_2kotlin_mockk.car.Car
+import com.smarttoolfactory.tutorial4_2kotlin_mockk.car.Direction
+import com.smarttoolfactory.tutorial4_2kotlin_mockk.car.Outcome
 import io.mockk.confirmVerified
 import io.mockk.every
 import io.mockk.mockk

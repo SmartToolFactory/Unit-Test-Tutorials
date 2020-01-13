@@ -1,6 +1,6 @@
 package com.smarttoolfactory.tutorial4_2kotlin_mockk
 
-import com.smarttoolfactory.tutorial4_2kotlin_mockk.model_car.Car
+import com.smarttoolfactory.tutorial4_2kotlin_mockk.car.Car
 import io.mockk.MockKAnnotations
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK

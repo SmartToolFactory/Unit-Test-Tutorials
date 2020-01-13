@@ -1,4 +1,4 @@
-package com.smarttoolfactory.tutorial4_2kotlin_mockk.model_car
+package com.smarttoolfactory.tutorial4_2kotlin_mockk.car
 
 class Car {
 

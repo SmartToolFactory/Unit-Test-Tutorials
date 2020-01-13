@@ -1,9 +1,8 @@
 package com.smarttoolfactory.tutorial4_2kotlin_mockk
 
-import com.smarttoolfactory.tutorial4_2kotlin_mockk.model_car.Car
+import com.smarttoolfactory.tutorial4_2kotlin_mockk.car.Car
 import io.mockk.confirmVerified
 import io.mockk.mockk
-import io.mockk.verify
 import org.junit.jupiter.api.Test
 
 class Test10VerifyAtLeastAtMostExactly {

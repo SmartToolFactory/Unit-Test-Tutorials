@@ -19,8 +19,12 @@ class Test2TestObserver {
             TimeUnit.SECONDS
         )
             .take(5)
+
         //Declare TestObserver
         val testObserver: TestObserver<Long> = TestObserver()
+
+        // Alternative 2 to declare test observer
+//        val testObserver = source.test()
 
         //Assert no subscription has occurred yet
         testObserver.assertNotSubscribed()
@@ -109,7 +113,7 @@ class Test2TestObserver {
 
     @Test
     fun `Test got an user`() {
-        val result = getUserObservable("John", "Wick")
+        val result = getUserObservableWithDelay("John", "Wick")
 
         val testObserver = TestObserver<User>()
 
@@ -131,7 +135,13 @@ class Test2TestObserver {
     }
 
 
-    private fun getUserObservable(name: String, surName: String): Observable<User> {
+    /**
+     * Returns a User object after 3 seconds of delay.
+     *
+     * First map operator is executed instantly, then waits 3 seconds and fires second map
+     * and returns user
+     */
+    private fun getUserObservableWithDelay(name: String, surName: String): Observable<User> {
 
 
         return Observable.just(User(name, surName))
