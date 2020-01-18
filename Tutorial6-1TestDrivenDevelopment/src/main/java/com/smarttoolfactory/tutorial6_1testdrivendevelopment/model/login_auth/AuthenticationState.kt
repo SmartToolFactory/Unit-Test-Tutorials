@@ -8,16 +8,16 @@ enum class AuthenticationState {
     /**
      * The user has authenticated successfully
      */
-    AUTHENTICATED,
+    SUCCESSFUL_AUTHENTICATION,
 
     /**
      * User left user name or password field empty
      */
-    EMPTY_FIELDS,
+    EMPTY_FIELD_ERROR,
     /**
      * Password or username type mismatch. Less than required length and/or missing alpha-numeric regex
      */
-    INVALID_FIELDS,
+    INVALID_FIELD_ERROR,
     /**
      * Authentication failed
      */
@@ -26,7 +26,9 @@ enum class AuthenticationState {
     /**
      * Max number of invalid login attempts occurred
      */
-    MAX_NUMBER_OF_INVALID_ATTEMPTS
+    MAX_NUMBER_OF_ATTEMPTS_ERROR
 }
 
 const val MAX_LOGIN_ATTEMPT = 3
+const val FIELD_LENGTH_MIN = 6
+const val FIELD_LENGTH_MAX = 10

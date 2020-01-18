@@ -9,7 +9,14 @@ import org.junit.Test;
 import org.mockito.invocation.InvocationOnMock;
 
 import static org.junit.Assert.fail;
-import static org.mockito.BDDMockito.*;
+import static org.mockito.BDDMockito.any;
+import static org.mockito.BDDMockito.eq;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.mock;
+import static org.mockito.BDDMockito.never;
+import static org.mockito.BDDMockito.then;
+import static org.mockito.BDDMockito.verify;
+import static org.mockito.BDDMockito.willThrow;
 
 
 public class BDDMockitoUnitTest {
@@ -52,6 +59,7 @@ public class BDDMockitoUnitTest {
 
     @Test
     public void givenInvalidContactName_whenSearch_thenRetunNull() {
+
         given(phoneBookRepository.contains(xContactName)).willReturn(false);
 
         String phoneNumber = phoneBookService.search(xContactName);
