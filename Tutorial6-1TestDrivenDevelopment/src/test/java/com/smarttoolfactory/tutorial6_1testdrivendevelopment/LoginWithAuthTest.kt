@@ -3,9 +3,8 @@ package com.smarttoolfactory.tutorial6_1testdrivendevelopment
 import com.smarttoolfactory.tutorial6_1testdrivendevelopment.model.login_auth.AccountManager
 import com.smarttoolfactory.tutorial6_1testdrivendevelopment.model.login_auth.AuthRepository
 import com.smarttoolfactory.tutorial6_1testdrivendevelopment.model.login_auth.AuthUseCase
-import com.smarttoolfactory.tutorial6_1testdrivendevelopment.model.login_auth.AuthenticationState.UNAUTHENTICATED
+import com.smarttoolfactory.tutorial6_1testdrivendevelopment.model.login_auth.AuthenticationState.EMPTY_FIELDS
 import io.mockk.clearMocks
-import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import org.junit.jupiter.api.BeforeEach
@@ -46,6 +45,9 @@ class LoginWithAuthTest {
         authUseCase = AuthUseCase(authRepository, userManager)
     }
 
+    /*
+      STEP 2: Create a failing test
+   */
     /**
      *  Scenario: Login check with empty fields:
      * * Given I am on the login page
@@ -59,13 +61,12 @@ class LoginWithAuthTest {
 
         // Given
 
-
         // When
         val expected = authUseCase.login("", "")
 
         // Then
         verify(exactly = 0) { authRepository.login(or(any(), ""), or(any(), "")) }
-        expected assertEquals UNAUTHENTICATED
+        expected assertEquals EMPTY_FIELDS
 
     }
 

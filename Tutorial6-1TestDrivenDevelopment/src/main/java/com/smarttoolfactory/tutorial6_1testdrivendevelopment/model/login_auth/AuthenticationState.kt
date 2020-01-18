@@ -28,3 +28,5 @@ enum class AuthenticationState {
      */
     MAX_NUMBER_OF_INVALID_ATTEMPTS
 }
+
+const val MAX_LOGIN_ATTEMPT = 3
