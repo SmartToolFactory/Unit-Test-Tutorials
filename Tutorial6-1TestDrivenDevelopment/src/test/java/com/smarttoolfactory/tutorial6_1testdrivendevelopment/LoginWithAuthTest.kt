@@ -16,8 +16,8 @@ import org.junit.jupiter.params.provider.ValueSource
 /**
  *
  * * Given describes the initial context for the example
-'  * When  describes the action that the actor in the system or stakeholder performs
-'  * Then describes the expected outcome of that action
+ * * When  describes the action that the actor in the system or stakeholder performs
+ * * Then describes the expected outcome of that action
  */
 
 /**
@@ -50,7 +50,7 @@ class LoginWithAuthTest {
     }
 
     /*
-      🔥 Test 1: Create a failing test for empty fields
+      🔥 Test 1-A: Create a test for empty fields
      */
     /**
      *  Scenario: Login check with empty fields:
@@ -64,7 +64,7 @@ class LoginWithAuthTest {
     fun `Empty fields result empty fields error`() {
 
         // Given
-        every { authRepository.login(or(any(), ""), or(any(), "")) }
+        every { authRepository.login(or(any(), ""), or(any(), "")) } returns null
 
         // When
         val expected = authUseCase.login("", "", false)
@@ -76,7 +76,7 @@ class LoginWithAuthTest {
     }
 
     /*
-        🔥 STEP 4: Test if password length is between 6 and 10 chars
+        🔥 STEP 2-A: Test if password length is between 6 and 10 chars
      */
     /**
      *  Scenario: Login check with empty fields:
@@ -92,9 +92,7 @@ class LoginWithAuthTest {
 
 
         // Given
-        every {
-            authRepository.login(any(), password)
-        }
+        every { authRepository.login(any(), password) } returns null
 
         // When
         val expected1 = authUseCase.login("username", password)
@@ -104,14 +102,13 @@ class LoginWithAuthTest {
         expected1 assertThatEquals INVALID_FIELD_ERROR
         expected2 assertThatEquals INVALID_FIELD_ERROR
 
-
         verify(exactly = 0) { authRepository.login(any(), any()) }
         confirmVerified(authRepository)
     }
 
 
     /*
-       🔥 STEP 4: Test if password matches correct expression
+       🔥 STEP 3-A: Test if user name matches correct type and passes min length
     */
 
     /**
@@ -127,9 +124,7 @@ class LoginWithAuthTest {
     fun `User name with invalid type returns invalid fields error`(userName: String) {
 
         // Given
-        every {
-            authRepository.login(userName, any())
-        }
+        every { authRepository.login(userName, any()) } returns null
 
         // When
         val expected1 = authUseCase.login(userName, "pass")
@@ -139,14 +134,13 @@ class LoginWithAuthTest {
         expected1 assertThatEquals INVALID_FIELD_ERROR
         expected2 assertThatEquals INVALID_FIELD_ERROR
 
-
         verify(exactly = 0) { authRepository.login(any(), any()) }
         confirmVerified(authRepository)
     }
 
 
     /*
-        🔥 STEP 6: Test invalid authentication state
+        🔥 STEP 4-A: Test invalid authentication via not matching username and/or password
      */
     @Test
     fun `Wrong password or user name fails authentication`() {
@@ -155,9 +149,7 @@ class LoginWithAuthTest {
         val userName = "user@example.com"
         val password = "password"
 
-        every {
-            authRepository.login(userName, password)
-        } returns null
+        every { authRepository.login(userName, password) } returns null
 
         // When
         val expected = authUseCase.login(userName, password)
@@ -173,7 +165,7 @@ class LoginWithAuthTest {
 
 
     /*
-        🔥 STEP 8: Test if user name matches correct expression
+        🔥 STEP 4-C: Test if user name matches correct expression
      */
     @Test
     fun `Correct password and user name passes authentication`() {
@@ -187,9 +179,7 @@ class LoginWithAuthTest {
             authRepository.login(userName, password)
         } returns AuthResponse(true, token)
 
-        every {
-            accountManager.saveToken(any())
-        }
+        every { accountManager.saveToken(any()) }
 
 
         // When
@@ -203,7 +193,7 @@ class LoginWithAuthTest {
 
 
     /*
-       🔥 STEP 10: Test if number of login attempts exceed threshold
+       🔥 STEP 5-A: Test if number of login attempts exceed threshold
     */
     @Test
     fun `Number of login attempts exceed maximum number`() {
@@ -212,13 +202,9 @@ class LoginWithAuthTest {
         val userName = "user@example.com"
         val password = "password"
 
-        every {
-            authRepository.login(userName, password)
-        } returns null
+        every { authRepository.login(userName, password) } returns null
 
-        every {
-            accountManager.saveToken(any())
-        } returns false
+        every { accountManager.saveToken(any()) } returns false
 
         // When
         authUseCase.login(userName, password)
@@ -228,14 +214,14 @@ class LoginWithAuthTest {
         expected assertThatEquals MAX_NUMBER_OF_ATTEMPTS_ERROR
 
         verify(exactly = 3) { authRepository.login(userName, password) }
-        // 🤨 Should i call this here
+        // 🤨 Should i call this here?
         verify(exactly = 0) { accountManager.saveToken(any()) }
 
     }
 
 
     /*
-       🔥 STEP 12: Test if token is saved
+       🔥 STEP 6-A: Test if token is saved
     */
     @Test
     fun `Token is saved when remember me is selected`() {
@@ -258,6 +244,7 @@ class LoginWithAuthTest {
         authUseCase.login(userName, password, false)
         authUseCase.login(userName, password, true)
 
+        // Then
         verify(exactly = 2) { authRepository.login(userName, password) }
         verify(exactly = 1) { accountManager.saveToken(token) }
 
@@ -265,17 +252,15 @@ class LoginWithAuthTest {
     }
 
     /*
-       🔥 STEP 14: Test if remember me works
+       🔥 STEP 7-A: Test if remember me works
     */
     @Test
-    fun `Get saved token`() {
+    fun `Returns saved token successfully`() {
 
         // Given
         val token = "token"
 
-        every {
-            accountManager.getToken()
-        } returns token
+        every { accountManager.getToken() } returns token
 
         // When
         val expected = authUseCase.getToken()
@@ -286,23 +271,24 @@ class LoginWithAuthTest {
     }
 
     /*
-     🔥 STEP 14: Test if remember me works
+     🔥 STEP 8-A: Test if logs out successfully
   */
     @Test
     fun `Logs out successfully`() {
 
         // Given
-        every {
-            accountManager.getToken()
-        } returns null
-
+        every { accountManager.getToken() } returns null
         every { accountManager.deleteToken() } just Runs
 
         // When
-        authUseCase.logOut()
-        val expected = authUseCase.getToken()
+        val expected = authUseCase.logOut()
+        val token = authUseCase.getToken()
 
         // Then
-        assert(expected == null)
+        expected assertThatEquals UNAUTHENTICATED
+        assert(token == null)
+        verify(exactly = 1) { accountManager.deleteToken() }
+
+
     }
 }

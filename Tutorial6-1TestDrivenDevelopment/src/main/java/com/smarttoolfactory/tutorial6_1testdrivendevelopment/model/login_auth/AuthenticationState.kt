@@ -30,5 +30,6 @@ enum class AuthenticationState {
 }
 
 const val MAX_LOGIN_ATTEMPT = 3
-const val FIELD_LENGTH_MIN = 6
-const val FIELD_LENGTH_MAX = 10
+const val PASSWORD_LENGTH_MIN = 6
+const val PASSWORD_LENGTH_MAX = 10
+const val USER_NAME_LENGTH_MIN = 15

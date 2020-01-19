@@ -10,7 +10,7 @@ class AuthUseCase(
     private var loginAttempt = 0
 
     /*
-        🔥 STEP 2: Throw exception for test to compile and fail
+        🔥 STEP 1-B: Throw exception for test to compile and fail
 
      */
 //    fun login(
@@ -23,7 +23,7 @@ class AuthUseCase(
 
 
     /*
-        🔥 STEP3: Add code to return EMPTY_FIELD_ERROR if username or password is empty
+        🔥 STEP 1-C: Add code to return EMPTY_FIELD_ERROR if username or password is empty
      */
 //    fun login(
 //        userName: String,
@@ -42,7 +42,7 @@ class AuthUseCase(
 
 
     /*
-       🔥 STEP3: Add code to return EMPTY_FIELD_ERROR if password length does not match
+       🔥 STEP 2-B: Add code to return EMPTY_FIELD_ERROR if password length does not match
     */
 //    fun login(
 //        userName: String,
@@ -61,7 +61,7 @@ class AuthUseCase(
 //    }
 
     /*
-        🔥 STEP5: Add code to return EMPTY_FIELD_ERROR if username is not valid expression
+        🔥 STEP 3-B: Add code to return EMPTY_FIELD_ERROR if username is not valid expression
     */
 //    fun login(
 //        userName: String,
@@ -80,7 +80,7 @@ class AuthUseCase(
 //    }
 
     /*
-        🔥 STEP7-9: Add code to return invalid authentication when user name or password is wrong
+        🔥 STEP 4-B: Add code to return invalid authentication when user name or password is wrong
      */
 //    fun login(
 //        userName: String,
@@ -112,7 +112,7 @@ class AuthUseCase(
 
 
     /*
-        🔥 STEP 11 Add code to check maximum number of attempts
+        🔥 STEP 5-B: Add code to check maximum number of attempts
      */
     fun login(
         userName: String,
@@ -167,8 +167,8 @@ class AuthUseCase(
     }
 
     /*
-       🔥 STEP 13 Add code to save token when remember me is selected
-    */
+        🔥 STEP 6-B Add code to save token when remember me is selected
+     */
     private fun saveToken(
         authResponse: AuthResponse?,
         rememberMe: Boolean
@@ -180,25 +180,31 @@ class AuthUseCase(
 
 
     private fun checkUserNameIsValid(field: String): Boolean {
-        return field.length > 15 && field.endsWith("@example.com")
+        return field.length > USER_NAME_LENGTH_MIN && field.endsWith("@example.com")
 
     }
 
     private fun checkIfPasswordIsValid(field: String): Boolean {
-        return field.length in 6..10
+        return field.length in PASSWORD_LENGTH_MIN..PASSWORD_LENGTH_MAX
     }
 
 
     /*
-      🔥 STEP 15 Add code to get token when it's saved
-   */
+        🔥 STEP 7-B Add code to get token when it's saved
+     */
     fun getToken(): String? {
         return accountManager.getToken()
 
     }
 
-    fun logOut() {
-        accountManager.deleteToken()
+    /*
+        🔥 STEP 8-B Add code to log out and delete token when logged out
+     */
+    fun logOut(): AuthenticationState {
+
+        accountManager.deleteToken().also {
+            return UNAUTHENTICATED
+        }
     }
 
 }
