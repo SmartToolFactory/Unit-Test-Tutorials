@@ -196,7 +196,7 @@ class LoginWithAuthTest {
        🔥 STEP 5-A: Test if number of login attempts exceed threshold
     */
     @Test
-    fun `Number of login attempts exceed maximum number`() {
+    fun `Number of login attempts exceeds maximum number`() {
 
         // Given
         val userName = "user@example.com"
@@ -214,7 +214,6 @@ class LoginWithAuthTest {
         expected assertThatEquals MAX_NUMBER_OF_ATTEMPTS_ERROR
 
         verify(exactly = 3) { authRepository.login(userName, password) }
-        // 🤨 Should i call this here?
         verify(exactly = 0) { accountManager.saveToken(any()) }
 
     }

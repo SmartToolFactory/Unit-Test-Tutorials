@@ -120,32 +120,40 @@ class AuthUseCase(
         rememberMe: Boolean = false
     ): AuthenticationState {
 
-        return if (userName.isNullOrBlank() || password.isNullOrBlank()) {
+        if (userName.isBlank() || password.isBlank()) {
             return EMPTY_FIELD_ERROR
-        } else if (!checkUserNameIsValid(userName) || !checkIfPasswordIsValid(password)) {
-            INVALID_FIELD_ERROR
+        }
+
+        if (!checkUserNameIsValid(userName) || !checkIfPasswordIsValid(password)) {
+            return INVALID_FIELD_ERROR
+        }
+
+
+        // Concurrent Authentication via mock that returns AUTHENTICATED, or FAILED_AUTHENTICATION
+
+        val authenticationPass = getAccountResponse(userName, password, rememberMe)
+
+
+        val resultState: AuthenticationState
+
+        if (authenticationPass) {
+            loginAttempt = 0
+            resultState = SUCCESSFUL_AUTHENTICATION
+
         } else {
-            // Concurrent Authentication via mock that returns AUTHENTICATED, or FAILED_AUTHENTICATION
 
-            val authenticationPass = getAccountResponse(userName, password, rememberMe)
+            loginAttempt++
 
-
-            if (authenticationPass) {
-
-                loginAttempt = 0
-                SUCCESSFUL_AUTHENTICATION
-
+            resultState = if (loginAttempt >= MAX_LOGIN_ATTEMPT) {
+                MAX_NUMBER_OF_ATTEMPTS_ERROR
             } else {
-
-                loginAttempt++
-
-                if (loginAttempt >= MAX_LOGIN_ATTEMPT) {
-                    MAX_NUMBER_OF_ATTEMPTS_ERROR
-                } else {
-                    FAILED_AUTHENTICATION
-                }
+                FAILED_AUTHENTICATION
             }
         }
+
+
+        return resultState
+
 
     }
 
