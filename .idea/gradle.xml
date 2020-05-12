@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <option name="testRunner" value="PLATFORM" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
@@ -10,7 +12,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/External-Tutorial-Hadi-Hariri-Mockito-Sample" />
             <option value="$PROJECT_DIR$/External-Tutorial-In28Minutes" />
-            <option value="$PROJECT_DIR$/External-Tutorial-Journaldev-Mockitoexamples-Junit5" />
+            <option value="$PROJECT_DIR$/External-Tutorial-JournalDev-MockitoExamples-JUnit5" />
             <option value="$PROJECT_DIR$/External-Tutorial-MkYong-JUnit5Examples" />
             <option value="$PROJECT_DIR$/Tutorial1-1Basics" />
             <option value="$PROJECT_DIR$/Tutorial2-1Mockito" />
@@ -23,7 +25,7 @@
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
-        <option name="testRunner" value="PLATFORM" />
+        <option name="useQualifiedModuleNames" value="true" />
       </GradleProjectSettings>
     </option>
   </component>

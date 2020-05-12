@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 
-class Test1ObjectMockK {
+class Test2ObjectMockK {
 
     @BeforeEach
     fun setUp() {

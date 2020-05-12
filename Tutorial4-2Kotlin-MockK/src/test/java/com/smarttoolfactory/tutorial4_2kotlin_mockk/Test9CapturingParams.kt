@@ -32,7 +32,6 @@ class Test9CapturingParams {
 
         calcService = mockk<CalculatorService>()
 
-        mathApplication.calcService = calcService
     }
 
     @Test
@@ -49,20 +48,6 @@ class Test9CapturingParams {
         assertEquals("Expected Param", slot.captured)
     }
 
-
-    @Test
-    fun `Returns captured parameter with slot2`() {
-
-        // given
-        val slot = slot<String>()
-        every { calcService.log(capture(slot)) } returns "Expected Output"
-
-        // when
-        mathApplication.log("Expected Param")
-
-        // then
-        assertEquals("Expected Param", slot.captured)
-    }
 
 
     @Test

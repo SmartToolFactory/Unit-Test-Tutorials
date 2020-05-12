@@ -40,7 +40,7 @@ class Test3RelaxedMockK {
         @Test
         fun `Add two numbers`() {
 
-            // If this was not a RelaxedMockk it would throw
+            // 🔥 If this was not a RelaxedMockk it would throw
             // io.mockk.MockKException: no answer found for: CalculatorService(#1).add(10.0, 20.0)
             // Given
 //        every { calcService.add(10.0, 20.0) } returns 30.0

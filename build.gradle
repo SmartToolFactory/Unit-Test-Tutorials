@@ -42,6 +42,9 @@ ext {
     targetSdkVersion = 29
     compileSdkVersion = 29
 
+    // Coroutines
+    coroutinesVersion = '1.3.5'
+
     // App dependencies
     androidXVersion = '1.0.0'
     androidXTestCoreVersion = '1.2.0'

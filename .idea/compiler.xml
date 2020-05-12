@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="UnitTestTutorial.External-Tutorial-Hadi-Hariri-Mockito-Sample" target="1.8" />
+      <module name="UnitTestTutorial.External-Tutorial-In28Minutes" target="1.7" />
+      <module name="UnitTestTutorial.External-Tutorial-Journaldev-Mockitoexamples-Junit5" target="1.8" />
+      <module name="UnitTestTutorial.External-Tutorial-MkYong-JUnit5Examples" target="1.8" />
+      <module name="UnitTestTutorial.Tutorial1-1Basics" target="1.7" />
+      <module name="UnitTestTutorial.Tutorial2-1Mockito" target="1.8" />
+      <module name="UnitTestTutorial.Tutorial2-2Mockito-BDD" target="1.8" />
+      <module name="UnitTestTutorial.Tutorial3-1JUnit5" target="1.8" />
+      <module name="UnitTestTutorial.Tutorial4-1Kotlin" target="1.8" />
+      <module name="UnitTestTutorial.Tutorial4-2Kotlin-MockK" target="1.8" />
+      <module name="UnitTestTutorial.Tutorial5-1RxJava-Tests" target="1.8" />
+      <module name="UnitTestTutorial.Tutorial6-1TestDrivenDevelopment" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -22,7 +22,7 @@ class Test12VerificationConfirmation {
 
 
     /**
-     * ConfirmVerified check when, and then sections of the test.
+     * ConfirmVerified check WHEN, and THEN sections of the test.
      * Not mocking with same params we used in verify does not have to be same.
      *
      */
@@ -35,11 +35,11 @@ class Test12VerificationConfirmation {
         every { car.drive(Direction.NORTH) } returns Outcome.OK
         every { car.drive(Direction.SOUTH) } returns Outcome.OK
 
-        // When
+        // WHEN
         car.drive(Direction.NORTH) // returns OK
         car.drive(Direction.SOUTH) // returns OK
 
-        // Then
+        // THEN
         verify {
             car.drive(Direction.SOUTH)
             car.drive(Direction.NORTH)
