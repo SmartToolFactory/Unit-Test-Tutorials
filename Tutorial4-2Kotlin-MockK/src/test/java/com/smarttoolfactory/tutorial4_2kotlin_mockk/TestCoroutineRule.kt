@@ -17,12 +17,18 @@ class TestCoroutineRule : TestRule {
     override fun apply(base: Statement, description: Description?) = object : Statement() {
         @Throws(Throwable::class)
         override fun evaluate() {
+
             Dispatchers.setMain(testCoroutineDispatcher)
 
             base.evaluate()
 
             Dispatchers.resetMain()
-            testCoroutineScope.cleanupTestCoroutines()
+
+            try {
+                testCoroutineScope.cleanupTestCoroutines()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 
