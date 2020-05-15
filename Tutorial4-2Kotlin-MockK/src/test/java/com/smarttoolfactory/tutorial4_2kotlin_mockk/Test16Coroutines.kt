@@ -22,8 +22,6 @@ class Test16Coroutines {
      * * [runBlockingTest] has a dispatcher that calls ` dispatcher.advanceUntilIdle()`
      * which progress time until all suspending functions complete or throws exception
      */
-
-
     @Test
     fun `First Coroutine test`() = runBlockingTest {
 
@@ -44,35 +42,11 @@ class Test16Coroutines {
     }
 
 
-    /**
-     * 🔥 THIS TEST FAILS even with advanceTimeBy or advanceUntilIdle
-     */
-    @Test(expected = TimeoutCancellationException::class)
-    fun `Test with timeout with launch`() = runBlockingTest {
-
-        launch {
-           mockResponseWitTimeout(2000, 3000)
-        }
-
-    }
-
-    /**
-     * 🔥 THIS TEST PASSES if timeout is shorter than delay time
-     */
-    @Test(expected = TimeoutCancellationException::class)
-    fun `Test with timeout with async`() = runBlockingTest {
-
-        val test = async {
-            mockResponseWitTimeout(2000, 3000)
-        }
-
-        Truth.assertThat(test.await()).isSameInstanceAs(TimeoutCancellationException::class)
-    }
 
 
     /**
      *
-     * This test FAILS because it's not [TestCoroutineDispatcher]
+     * ❌ This test FAILS because it's not [TestCoroutineDispatcher]
      * that calling [TestCoroutineDispatcher.runBlockingTest] or [withContext] is not
      * invoked with [CoroutineContext] of [runBlockingTest].
      *
@@ -81,7 +55,6 @@ class Test16Coroutines {
     fun `Coroutine test with runBlockingTest that fails`() = runBlockingTest {
 
         println("Test started")
-
         println("Test thread: ${Thread.currentThread().name}, scope: $this")
 
         // GIVEN
@@ -114,11 +87,40 @@ class Test16Coroutines {
 
     }
 
+    /**
+     * ❌ THIS TEST FAILS even with advanceTimeBy or advanceUntilIdle
+     */
+    @Test(expected = TimeoutCancellationException::class)
+    fun `Test with timeout with launch`() = runBlockingTest {
+        launch {
+            mockResponseWitTimeout(2000, 3000)
+        }
+    }
+
+    /**
+     * ✅ THIS TEST PASSES if timeout is shorter than delay time
+     */
+    @Test(expected = TimeoutCancellationException::class)
+    fun `Test with timeout with async`() = runBlockingTest {
+
+        val test = async {
+            mockResponseWitTimeout(2000, 3000)
+        }
+
+        Truth.assertThat(test.await()).isSameInstanceAs(TimeoutCancellationException::class)
+    }
+
+
+
+
+    /*
+        ******** TESTS with TestCoroutineDispatcher  ********
+     */
+
     @Test
-    fun `Coroutine test with TestCoroutineDispatcher`() = testCoroutineDispatcher.runBlockingTest {
+    fun `Coroutine test using TestCoroutineDispatcher`() = testCoroutineDispatcher.runBlockingTest {
 
         println("Test started")
-
         println("Test thread: ${Thread.currentThread().name}, scope: $this")
 
         // GIVEN
@@ -151,11 +153,69 @@ class Test16Coroutines {
 
     }
 
+
+    /*
+        Get Response
+     */
+
+    /*
+        Throw Exception
+     */
+    @Test(expected = RuntimeException::class)
+    fun `Throw exception using TestCoroutineDispatcher`() = testCoroutineDispatcher.runBlockingTest {
+        throwExceptionAfterDelay()
+    }
+
+    @Test(expected = RuntimeException::class)
+    fun `Throw exception using TestCoroutineDispatcher with async`() = testCoroutineDispatcher.runBlockingTest {
+        async {
+            throwExceptionAfterDelay()
+        }.await()
+    }
+
+    @Test(expected = RuntimeException::class)
+    fun `Throw exception using TestCoroutineDispatcher with launch`() = testCoroutineDispatcher.runBlockingTest {
+        launch {
+            throwExceptionAfterDelay()
+        }
+    }
+
+
+    /*
+        Time Out
+     */
+
     @Test(expected = TimeoutCancellationException::class)
-    fun `Test that time outs with TestCoroutineDispatcher`() =
+    fun `Test timeout using TestCoroutineDispatcher`() =
         testCoroutineDispatcher.runBlockingTest {
             mockResponseWitTimeout(2000, 3000)
         }
+
+    /**
+     *  ❌ This test FAILS ???
+     */
+    @Test(expected = TimeoutCancellationException::class)
+    fun `Test timeout using TestCoroutineDispatcher with launch`() =
+        testCoroutineDispatcher.runBlockingTest {
+
+            launch(testCoroutineDispatcher) {
+                mockResponseWitTimeout(2000, 3000)
+            }
+
+        }
+
+
+    @Test(expected = TimeoutCancellationException::class)
+    fun `Test timeout with TestCoroutineDispatcher with async`() =
+        testCoroutineDispatcher.runBlockingTest {
+
+            val deferred = async(testCoroutineDispatcher) {
+                mockResponseWitTimeout(2000, 3000)
+            }
+
+            Truth.assertThat(deferred.await()).isSameInstanceAs(TimeoutCancellationException::class)
+        }
+
 
     @Before
     fun setUp() {
@@ -178,7 +238,6 @@ class Test16Coroutines {
 private suspend fun mockSomeDelayedWork(timeInMillis: Long = 3000): String {
     delay(timeInMillis)
     return "Hello World"
-
 }
 
 private suspend fun mockResponseWitTimeout(
@@ -191,3 +250,11 @@ private suspend fun mockResponseWitTimeout(
     }
 }
 
+
+suspend fun throwExceptionAfterDelay() {
+    println("⛱ fooWithException() BEFORE delay in thread: ${Thread.currentThread()}")
+    delay(6_000)
+    println("😎 fooWithException() AFTER delay in thread: ${Thread.currentThread()}")
+    throw RuntimeException("Failed via TEST exception")
+
+}
