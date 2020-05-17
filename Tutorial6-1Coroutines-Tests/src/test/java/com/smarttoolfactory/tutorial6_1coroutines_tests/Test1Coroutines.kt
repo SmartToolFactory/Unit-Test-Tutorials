@@ -41,9 +41,6 @@ class Test16Coroutines {
 
     }
 
-
-
-
     /**
      *
      * ❌ This test FAILS because it's not [TestCoroutineDispatcher]
@@ -52,7 +49,7 @@ class Test16Coroutines {
      *
      */
     @Test
-    fun `Coroutine test with runBlockingTest that fails`() = runBlockingTest {
+    fun `Test coroutine with runBlockingTest that fails`() = runBlockingTest {
 
         println("Test started")
         println("Test thread: ${Thread.currentThread().name}, scope: $this")
@@ -92,6 +89,7 @@ class Test16Coroutines {
      */
     @Test(expected = TimeoutCancellationException::class)
     fun `Test with timeout with launch`() = runBlockingTest {
+
         launch {
             mockResponseWitTimeout(2000, 3000)
         }
@@ -118,7 +116,7 @@ class Test16Coroutines {
      */
 
     @Test
-    fun `Coroutine test using TestCoroutineDispatcher`() = testCoroutineDispatcher.runBlockingTest {
+    fun `Test using TestCoroutineDispatcher`() = testCoroutineDispatcher.runBlockingTest {
 
         println("Test started")
         println("Test thread: ${Thread.currentThread().name}, scope: $this")
@@ -155,12 +153,9 @@ class Test16Coroutines {
 
 
     /*
-        Get Response
-     */
-
-    /*
         Throw Exception
      */
+
     @Test(expected = RuntimeException::class)
     fun `Throw exception using TestCoroutineDispatcher`() = testCoroutineDispatcher.runBlockingTest {
         throwExceptionAfterDelay()
