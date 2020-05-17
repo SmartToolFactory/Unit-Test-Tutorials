@@ -13,7 +13,8 @@
       <module name="UnitTestTutorial.Tutorial4-1Kotlin" target="1.8" />
       <module name="UnitTestTutorial.Tutorial4-2Kotlin-MockK" target="1.8" />
       <module name="UnitTestTutorial.Tutorial5-1RxJava-Tests" target="1.8" />
-      <module name="UnitTestTutorial.Tutorial6-1TestDrivenDevelopment" target="1.8" />
+      <module name="UnitTestTutorial.Tutorial6-1Coroutines-Tests" target="1.8" />
+      <module name="UnitTestTutorial.Tutorial7-1TestDrivenDevelopment" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
