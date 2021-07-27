@@ -13,7 +13,7 @@ dependencies {
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.3.2'
     testImplementation group: 'org.junit.platform', name: 'junit-platform-runner', version: '1.0.0-M1'
     testImplementation group: 'junit', name: 'junit', version: '4.12'
-    testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.3.2'
+    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.3.2'
 
 }
 

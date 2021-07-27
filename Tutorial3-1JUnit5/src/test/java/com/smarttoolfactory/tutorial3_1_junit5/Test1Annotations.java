@@ -33,8 +33,9 @@ class Test1Annotations {
     //    @Before
     @BeforeEach
     void setUp() throws Exception {
+
         mCalculation = new Calculation();
-        System.out.println("before each");
+        System.out.println("before each this test: " + this);
     }
 
     @Test

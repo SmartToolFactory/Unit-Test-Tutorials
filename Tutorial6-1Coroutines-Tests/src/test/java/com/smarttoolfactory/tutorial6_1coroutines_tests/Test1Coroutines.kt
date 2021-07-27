@@ -84,6 +84,10 @@ class Test16Coroutines {
 
     }
 
+    /**
+     * * ✅ This test PASSes if launch is not used even without advanceTimeBy
+     * * ❌ This test FAILs if launch is there but no `advanceTimeBy(3000)` or `advanceUntilIdle`
+     */
     @Test
     fun test() = runBlockingTest {
 
@@ -91,11 +95,14 @@ class Test16Coroutines {
 
         var actual = 0
 
-        launch {
-            actual = subject.getIntAfterDelay(3000)
-        }
+//        launch {
+        actual = subject.getIntAfterDelay(3000)
+//        }
 
-        advanceTimeBy(3000)
+        // 🔥🔥 It's required to advance time when launch builder is used with a
+        // function that has a delay
+//        advanceTimeBy(3000)
+
         Truth.assertThat(actual).isEqualTo(12)
 
     }
@@ -103,14 +110,24 @@ class Test16Coroutines {
     /*
         *** Time Out ***
      */
+
+    /**
+     * ✅ THIS TEST PASSES
+     */
+    @Test(expected = TimeoutCancellationException::class)
+    fun `Test with timeout`() = runBlockingTest {
+        mockResponseWithTimeout(2000, 3000)
+    }
+
     /**
      * ❌ THIS TEST FAILS even with advanceTimeBy or advanceUntilIdle
+     * or with [testCoroutineDispatcher]
      */
     @Test(expected = TimeoutCancellationException::class)
     fun `Test with timeout with launch`() = runBlockingTest {
 
         launch {
-            mockResponseWitTimeout(2000, 3000)
+            mockResponseWithTimeout(2000, 3000)
         }
     }
 
@@ -122,12 +139,15 @@ class Test16Coroutines {
     fun `Test with timeout with async`() = runBlockingTest {
 
         val test = async {
-            mockResponseWitTimeout(2000, 3000)
+            mockResponseWithTimeout(2000, 3000)
         }
 
         Truth.assertThat(test.await()).isSameInstanceAs(TimeoutCancellationException::class)
     }
 
+    /**
+     * ✅ THIS TEST PASSES
+     */
     @Test(expected = RuntimeException::class)
     fun `Test exception`() = runBlockingTest {
 
@@ -135,6 +155,9 @@ class Test16Coroutines {
         throw RuntimeException()
     }
 
+    /**
+     * ✅ THIS TEST PASSES
+     */
     @Test(expected = RuntimeException::class)
     fun `Test exception with launch`() = runBlockingTest {
 
@@ -191,12 +214,18 @@ class Test16Coroutines {
         Throw Exception
      */
 
+    /**
+     * ✅ THIS TEST PASSES
+     */
     @Test(expected = RuntimeException::class)
     fun `Throw exception using TestCoroutineDispatcher`() =
         testCoroutineDispatcher.runBlockingTest {
             throwExceptionAfterDelay()
         }
 
+    /**
+     * ✅ THIS TEST PASSES
+     */
     @Test(expected = RuntimeException::class)
     fun `Throw exception using TestCoroutineDispatcher with async`() =
         testCoroutineDispatcher.runBlockingTest {
@@ -205,6 +234,9 @@ class Test16Coroutines {
             }.await()
         }
 
+    /**
+     * ✅ THIS TEST PASSES
+     */
     @Test(expected = RuntimeException::class)
     fun `Throw exception using TestCoroutineDispatcher with launch`() =
         testCoroutineDispatcher.runBlockingTest {
@@ -218,10 +250,13 @@ class Test16Coroutines {
         Time Out
      */
 
+    /**
+     * ✅ THIS TEST PASSES
+     */
     @Test(expected = TimeoutCancellationException::class)
     fun `Test timeout using TestCoroutineDispatcher`() =
         testCoroutineDispatcher.runBlockingTest {
-            mockResponseWitTimeout(2000, 3000)
+            mockResponseWithTimeout(2000, 3000)
         }
 
     /**
@@ -232,9 +267,13 @@ class Test16Coroutines {
         testCoroutineDispatcher.runBlockingTest {
 
             launch(testCoroutineDispatcher) {
-                mockResponseWitTimeout(2000, 3000)
+                println("⏰ inside launch ${Thread.currentThread().name}")
+                mockResponseWithTimeout(2000, 3000)
             }
 
+            advanceUntilIdle()
+
+            println("😱 END of Test ${Thread.currentThread().name}")
         }
 
 
@@ -243,8 +282,13 @@ class Test16Coroutines {
         testCoroutineDispatcher.runBlockingTest {
 
             val deferred = async(testCoroutineDispatcher) {
-                mockResponseWitTimeout(2000, 3000)
+
+                println("⏰ inside async ${Thread.currentThread().name}")
+
+                mockResponseWithTimeout(2000, 3000)
             }
+
+            println("😱 END of Test ${Thread.currentThread().name}")
 
             Truth.assertThat(deferred.await()).isSameInstanceAs(TimeoutCancellationException::class)
         }
@@ -270,29 +314,30 @@ class Test16Coroutines {
         return "Hello World"
     }
 
-    private suspend fun mockResponseWitTimeout(
+    private suspend fun mockResponseWithTimeout(
         timeOut: Long = 2000,
         responseDelayTime: Long = 3000
     ): String {
 
         return withTimeout(timeMillis = timeOut) {
+
+            println("⏰ mockResponseWithTimeout ${Thread.currentThread().name}")
+
             mockSomeDelayedWork(responseDelayTime)
         }
     }
 
 
     private suspend fun throwExceptionAfterDelay() {
-        println("⛱ fooWithException() BEFORE delay in thread: ${Thread.currentThread()}")
+        println("⛱ fooWithException() BEFORE delay in thread: ${Thread.currentThread().name}")
         delay(6_000)
-        println("😎 fooWithException() AFTER delay in thread: ${Thread.currentThread()}")
+        println("😎 fooWithException() AFTER delay in thread: ${Thread.currentThread().name}")
         throw RuntimeException("Failed via TEST exception")
-
     }
-
 
 }
 
-class Subject() {
+class Subject {
 
     var result = 0
 
