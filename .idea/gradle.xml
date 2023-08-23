@@ -7,13 +7,10 @@
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="JDK" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/External-Tutorial-Hadi-Hariri-Mockito-Sample" />
-            <option value="$PROJECT_DIR$/External-Tutorial-In28Minutes" />
-            <option value="$PROJECT_DIR$/External-Tutorial-JournalDev-MockitoExamples-JUnit5" />
-            <option value="$PROJECT_DIR$/External-Tutorial-MkYong-JUnit5Examples" />
             <option value="$PROJECT_DIR$/Tutorial1-1Basics" />
             <option value="$PROJECT_DIR$/Tutorial2-1Mockito" />
             <option value="$PROJECT_DIR$/Tutorial2-2Mockito-BDD" />
@@ -22,10 +19,8 @@
             <option value="$PROJECT_DIR$/Tutorial4-2Kotlin-MockK" />
             <option value="$PROJECT_DIR$/Tutorial5-1RxJava-Tests" />
             <option value="$PROJECT_DIR$/Tutorial6-1Coroutines-Tests" />
-            <option value="$PROJECT_DIR$/Tutorial7-1TestDrivenDevelopment" />
           </set>
         </option>
-        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>

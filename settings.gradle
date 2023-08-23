@@ -1,11 +1,6 @@
 include ':Tutorial6-1Coroutines-Tests'
 rootProject.name = 'UnitTestTutorial'
 
-include ':External-Tutorial-Journaldev-Mockitoexamples-Junit5', ':Tutorial7-1TestDrivenDevelopment'
-include ':External-Tutorial-Hadi-Hariri-Mockito-Sample'
-include ':External-Tutorial-In28Minutes'
-include ':External-Tutorial-MkYong-JUnit5Examples'
-
 include ':Tutorial1-1Basics'
 include ':Tutorial2-1Mockito'
 include ':Tutorial2-2Mockito-BDD'
